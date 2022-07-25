@@ -22,6 +22,10 @@ main {
   justify-content: center;
 }
 
+hr {
+  margin-top: 15px;
+}
+
 .button {
   display: block;
   color: var(--light);
@@ -44,4 +48,53 @@ main {
   box-shadow: 10px 5px 5px var(--shadow);
 }
 
+#start-card {
+  display: inline;
+  text-align: center;
+}
 
+.option-button {
+  width: 100%;
+  text-align: left;
+  margin: 5px;
+}
+
+#result {
+  display: none;
+}
+
+.inline-form {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#initials {
+  width: 25%;
+  margin: 10px;
+  padding: 10px;
+}
+
+#back-button {
+  margin-right: 10px;
+}
+
+#highscores {
+  padding-inline-start: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    max-width: 50%;
+  }
+}
+
+@media (hover) {
+  a:hover {
+    color: var(--shadow);
+  }
+
+  button:hover {
+    background-color: var(--shadow);
+  }
+}
