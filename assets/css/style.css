@@ -1,0 +1,47 @@
+:root {
+  --light: #e7e7e7;
+  --main: #bbb2e9;
+  --shadow: #d5d9f4c7;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--main);
+  color: var(--light);
+  padding: 10px;
+}
+
+time {
+  min-width: 100px;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  display: block;
+  color: var(--light);
+  background-color: var(--main);
+  padding: 10px;
+  border-radius: 8px;
+  border: #e7e7e7;
+}
+
+.inline-button {
+  display: inline-flex;
+}
+
+.card {
+  max-width: 75%;
+  margin-top: 150px;
+  border: 2px solid var(--shadow);
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 10px 5px 5px var(--shadow);
+}
+
+
