@@ -155,9 +155,71 @@ var questions = [
   },
 ];
 
-var startCard = document.querySelector("start-card");
-var quizCard = document.querySelector("quiz-card");
-var scoreCard = document.querySelector("score-card");
-var leaderboardCard = document.querySelector("leaderboard-card");
+var startCard = document.querySelector("#start-card");
+var quizCard = document.querySelector("#quiz-card");
+var scoreCard = document.querySelector("#score-card");
+var leaderboardCard = document.querySelector("#leaderboard-card");
 
+function hideCards() {
+  startCard.setAttribute("hidden", true);
+  quizCard.setAttribute("hidden", true);
+  scoreCard.setAttribute("hidden", true);
+  leaderboardCard.setAttribute("hidden", true);
+}
+
+var result = document.querySelector("#result");
+var resultText = document.querySelector("#result-text");
+
+function hideResult() {
+  result.style.display = "none";
+}
+
+var intervalID;
+var time;
+var currentQuestion;
+
+document.querySelector("#start-button").addEventListener("click", startQuiz);
+
+function startQuiz() {
+  hideCards();
+  quizCard.removeAttribute("hidden");
+
+  currentQuestion = 0;
+  displayQuestion();
+
+  time = questions.length * 10;
+
+  intervalID = setInterval(countDown, 1000);
+
+  displayTime();
+}
+
+function countDown() {
+  time--;
+  displayTime();
+
+  if (time <= 0) {
+    endQuiz();
+  }
+}
+
+var timeLeft = document.querySelector("#time");
+
+function displayTime() {
+  timeLeft.textContent = time;
+}
+
+function displayQuestion() {
+  let question = questions[currentQuestion];
+  let options = question.options;
+
+  let questionHeading = document.querySelector("#question");
+  questionHeading.textContent = question.questionText;
+
+  for (let i = 0; i < options.length; i++) {
+    let option = options[i];
+    let optionButton = document.querySelector("#answer" + i);
+    optionButton.textContent = option;
+  }
+}
 
