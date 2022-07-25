@@ -9,7 +9,7 @@ header {
   justify-content: space-between;
   background-color: var(--main);
   color: var(--light);
-  padding: 10px;
+  padding: 15px;
 }
 
 time {
@@ -24,6 +24,12 @@ main {
 
 hr {
   margin-top: 15px;
+}
+
+h1 {
+  font-size: 150%;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
 .button {
@@ -50,7 +56,11 @@ hr {
 
 #start-card {
   display: inline;
-  text-align: center;
+  text-align: left;
+}
+
+#start-button {
+  margin-top: 15px;
 }
 
 .option-button {
@@ -92,9 +102,11 @@ hr {
 @media (hover) {
   a:hover {
     color: var(--shadow);
+    cursor: pointer;
   }
 
   button:hover {
     background-color: var(--shadow);
+    cursor: pointer;
   }
 }
