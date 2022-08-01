@@ -301,7 +301,7 @@ function updateStoredScores(leaderboardEntry) {
 
 function getLeaderboard() {
   let storedLeaderboard = localStorage.getItem("storedScores");
-  if (storedScores !== null) {
+  if (storedLeaderboard !== null) {
     let storedScores = JSON.parse(storedLeaderboard);
     return storedScores;
   } else {
