@@ -32,10 +32,15 @@ h1 {
   margin-bottom: 10px;
 }
 
+li {
+  margin-bottom: 10px;
+}
+
 .button {
   display: block;
   color: var(--light);
   background-color: var(--main);
+  margin: 8px;
   padding: 10px;
   border-radius: 8px;
   border: #e7e7e7;
