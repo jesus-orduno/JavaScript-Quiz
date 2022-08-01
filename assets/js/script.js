@@ -182,6 +182,7 @@ document.querySelector("#start-button").addEventListener("click", startQuiz);
 
 function startQuiz() {
   hideCards();
+  startCard.setAttribute("hidden", true);
   quizCard.removeAttribute("hidden");
 
   currentQuestion = 0;
@@ -203,7 +204,7 @@ function countDown() {
   }
 }
 
-var timeLeft = document.querySelector("#time");
+var timeLeft = document.querySelector("#time-left");
 
 function displayTime() {
   timeLeft.textContent = time;
@@ -223,3 +224,144 @@ function displayQuestion() {
   }
 }
 
+document.querySelector("#answer-options").addEventListener("click", checkAnswer);
+
+function correct(optionButton) {
+  return optionButton.textContent === questions[currentQuestion].answer;
+}
+
+function checkAnswer(eventObject) {
+  let optionButton = eventObject.target;
+  result.style.display = "block";
+
+  if (correct(optionButton)) {
+    resultText.textContent = "Correct!";
+    setTimeout(hideResult, 1000);
+  } else {
+    resultText.textContent = "Incorrect!";
+    setTimeout(hideResult, 1000);
+    if (time >= 10) {
+      time = time - 10;
+      displayTime();
+    } else {
+      time = 0;
+      displayTime();
+      endQuiz();
+    }
+  }
+
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    displayQuestion();
+  } else {
+    endQuiz();
+  }
+}
+
+var score = document.querySelector("#score");
+
+function endQuiz() {
+  clearInterval(intervalID);
+  hideCards();
+  scoreCard.removeAttribute("hidden");
+  score.textContent = time;
+}
+
+var submitButton = document.querySelector("#submit-button");
+var inputInitials = document.querySelector("#initials");
+
+submitButton.addEventListener("click", submitScore);
+
+function submitScore(event) {
+  event.preventDefault();
+
+  if (!inputInitials.value) {
+    alert("Please enter your initials.");
+    return;
+  }
+
+  let leaderboardEntry = {
+    initials: inputInitials.value,
+    score: time,
+  };
+
+  updateStoredScores(leaderboardEntry);
+
+  hideCards();
+  leaderboardCard.removeAttribute("hidden");
+
+  displayLeaderboard();
+}
+
+function updateStoredScores(leaderboardEntry) {
+  let storedScores = getLeaderboard();
+  storedScores.push(leaderboardEntry);
+  localStorage.setItem("storedScores", JSON.stringify(storedScores));
+}
+
+function getLeaderboard() {
+  let storedLeaderboard = localStorage.getItem("storedScores");
+  if (storedScores !== null) {
+    let storedScores = JSON.parse(storedLeaderboard);
+    return storedScores;
+  } else {
+    storedScores = [];
+  }
+  return storedScores;
+}
+
+function displayLeaderboard() {
+  let sortedStoredScores = sortLeaderboard();
+  var highscores = document.querySelector("#highscores");
+  highscores.textContent = "";
+  for (let i = 0; i < sortedStoredScores.length; i++) {
+    let leaderboardEntry = sortedStoredScores[i];
+    let newListItem = document.createElement("li");
+    newListItem.textContent =
+      leaderboardEntry.initials + ": " + leaderboardEntry.score;
+    highscores.append(newListItem);
+  }
+}
+
+function sortLeaderboard() {
+  let storedScores = getLeaderboard();
+  if (!storedScores) {
+    return;
+  }
+
+  storedScores.sort(function(a, b) {
+    return b.score - a.score;
+  });
+  return storedScores;
+}
+
+var clearButton = document.querySelector("#clear-button");
+clearButton.addEventListener("click", clearLeaderboard);
+
+function clearLeaderboard() {
+  localStorage.clear();
+  displayLeaderboard();
+}
+
+var backButton = document.querySelector("#back-button");
+backButton.addEventListener("click", backToStart);
+
+function backToStart() {
+  hideCards();
+  startCard.removeAttribute("hidden");
+}
+
+var leaderboard = document.querySelector("#leaderboard");
+leaderboard.addEventListener("click", showLeaderboard);
+
+function showLeaderboard() {
+  hideCards();
+  leaderboardCard.removeAttribute("hidden");
+  
+  clearInterval(intervalID);
+
+  time = undefined;
+  displayTime();
+
+  displayLeaderboard();
+}
