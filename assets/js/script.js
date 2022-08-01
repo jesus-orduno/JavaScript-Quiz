@@ -155,7 +155,7 @@ var questions = [
   },
 ];
 
-var startCard = document.querySelector("#start-card");
+var startCard = document.querySelector("#main-page-card");
 var quizCard = document.querySelector("#quiz-card");
 var scoreCard = document.querySelector("#score-card");
 var leaderboardCard = document.querySelector("#leaderboard-card");
@@ -182,7 +182,7 @@ document.querySelector("#start-button").addEventListener("click", startQuiz);
 
 function startQuiz() {
   hideCards();
-  startCard.setAttribute("hidden", true);
+  // startCard.setAttribute("hidden", true);
   quizCard.removeAttribute("hidden");
 
   currentQuestion = 0;

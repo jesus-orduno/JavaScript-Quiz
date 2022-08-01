@@ -40,7 +40,7 @@ li {
   display: block;
   color: var(--light);
   background-color: var(--main);
-  margin: 8px;
+  margin: 8px 0;
   padding: 10px;
   border-radius: 8px;
   border: #e7e7e7;
@@ -79,7 +79,7 @@ li {
 }
 
 .inline-form {
-  display: inline-flex;
+  display: block;
   align-items: center;
   flex-wrap: wrap;
 }
