@@ -1,4 +1,4 @@
-# orduno-challenge-four
+# JavaScript-Quiz
 
 ## Description
 
@@ -33,8 +33,8 @@ THEN I can save my initials and my score
 
 ## Screenshot
 
-![orduno-password-generator-screenshot](#)
+![orduno-password-generator-screenshot](./assets/images/Code%20Quiz.gif)
 
 ## Link to Deployed Application
 
-[Page published here](#)
+[Page published here](https://jesus-orduno.github.io/JavaScript-Quiz/)
