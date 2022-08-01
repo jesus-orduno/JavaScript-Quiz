@@ -31,9 +31,9 @@ WHEN the game is over
 THEN I can save my initials and my score
 ```
 
-## Screenshot
+## Application Recording
 
-![orduno-password-generator-screenshot](./assets/images/Code%20Quiz.gif)
+![orduno-JavaScript-quiz-recording](./assets/images/Code%20Quiz.gif)
 
 ## Link to Deployed Application
 
